@@ -5,6 +5,9 @@ interface AvatarMouthProps {
   style: MouthStyle;
 }
 
+const FACE_DY = 50 * 0.95 * 0.9 * 0.97 * 0.9 * 0.05;
+const MOUTH_Y = 122 + FACE_DY;
+
 export function AvatarMouth({ style }: AvatarMouthProps) {
   switch (style) {
     case "smile":
@@ -16,7 +19,7 @@ export function AvatarMouth({ style }: AvatarMouthProps) {
           strokeLinecap="round"
           strokeLinejoin="round"
         >
-          <path d="M88 116 Q94 120 100 116 Q106 120 112 116" />
+          <path d={`M90 ${MOUTH_Y} Q94 ${MOUTH_Y + 4} 100 ${MOUTH_Y} Q106 ${MOUTH_Y + 4} 110 ${MOUTH_Y}`} />
         </g>
       );
 
@@ -25,19 +28,19 @@ export function AvatarMouth({ style }: AvatarMouthProps) {
         <g>
           <ellipse
             cx="100"
-            cy="118"
-            rx="9"
-            ry="8"
+            cy={MOUTH_Y + 2}
+            rx="8"
+            ry="7"
             fill="#F5A0A0"
             stroke={CAT.outlineDark}
             strokeWidth="1.5"
           />
-          <ellipse cx="100" cy="120" rx="5.5" ry="3.5" fill="#E88888" opacity="0.5" />
+          <ellipse cx="100" cy={MOUTH_Y + 4} rx="5" ry="3" fill="#E88888" opacity="0.5" />
         </g>
       );
 
     case "small":
-      return <circle cx="100" cy="117" r="2.2" fill={CAT.outlineDark} />;
+      return <circle cx="100" cy={MOUTH_Y + 1} r="2.2" fill={CAT.outlineDark} />;
 
     default:
       return null;

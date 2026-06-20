@@ -38,7 +38,7 @@ export function Avatar({ config }: AvatarProps) {
       />
 
       {/* 床影 */}
-      <ellipse cx="100" cy="218" rx="48" ry="5" fill="#C4B8A8" opacity="0.25" />
+      <ellipse cx="100" cy="212" rx="38" ry="4" fill="#C4B8A8" opacity="0.25" />
 
       <g filter="url(#softShadow)">
         <AvatarFace />
