@@ -1,4 +1,5 @@
 import type { EyeStyle } from "@/types/avatar";
+import { CAT } from "@/lib/avatarColors";
 
 interface AvatarEyesProps {
   style: EyeStyle;
@@ -9,66 +10,44 @@ export function AvatarEyes({ style }: AvatarEyesProps) {
     case "round":
       return (
         <g>
-          <ellipse cx="78" cy="108" rx="10" ry="12" fill="#2D3436" />
-          <ellipse cx="122" cy="108" rx="10" ry="12" fill="#2D3436" />
-          <circle cx="81" cy="105" r="3.5" fill="#fff" />
-          <circle cx="125" cy="105" r="3.5" fill="#fff" />
+          <circle cx="82" cy="98" r="4.5" fill={CAT.eye} />
+          <circle cx="118" cy="98" r="4.5" fill={CAT.eye} />
         </g>
       );
+
     case "sparkle":
       return (
-        <g>
-          <ellipse cx="78" cy="108" rx="11" ry="13" fill="#2D3436" />
-          <ellipse cx="122" cy="108" rx="11" ry="13" fill="#2D3436" />
-          <circle cx="82" cy="104" r="4" fill="#fff" />
-          <circle cx="126" cy="104" r="4" fill="#fff" />
-          <circle cx="75" cy="112" r="1.5" fill="#74B9FF" />
-          <circle cx="119" cy="112" r="1.5" fill="#74B9FF" />
-          <path
-            d="M78 92 L80 96 L78 100 L76 96 Z"
-            fill="#FFD700"
-            opacity="0.8"
-          />
-          <path
-            d="M122 92 L124 96 L122 100 L120 96 Z"
-            fill="#FFD700"
-            opacity="0.8"
-          />
+        <g
+          fill="none"
+          stroke={CAT.eye}
+          strokeWidth="2.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="M76 100 Q82 94 88 100" />
+          <path d="M112 100 Q118 94 124 100" />
         </g>
       );
+
     case "sleepy":
       return (
-        <g>
-          <path
-            d="M66 108 Q78 100 90 108"
-            stroke="#2D3436"
-            strokeWidth="3"
-            fill="none"
-            strokeLinecap="round"
-          />
-          <path
-            d="M110 108 Q122 100 134 108"
-            stroke="#2D3436"
-            strokeWidth="3"
-            fill="none"
-            strokeLinecap="round"
-          />
+        <g stroke={CAT.eye} strokeWidth="2.5" strokeLinecap="round">
+          <line x1="76" y1="98" x2="88" y2="98" />
+          <line x1="112" y1="98" x2="124" y2="98" />
         </g>
       );
+
     case "wink":
       return (
         <g>
-          <ellipse cx="78" cy="108" rx="10" ry="12" fill="#2D3436" />
-          <circle cx="81" cy="105" r="3.5" fill="#fff" />
-          <path
-            d="M112 108 Q122 100 132 108"
-            stroke="#2D3436"
-            strokeWidth="3"
-            fill="none"
-            strokeLinecap="round"
-          />
+          <circle cx="82" cy="98" r="11" fill="none" stroke="#E74C3C" strokeWidth="2.5" />
+          <circle cx="118" cy="98" r="11" fill="none" stroke="#E74C3C" strokeWidth="2.5" />
+          <line x1="93" y1="98" x2="107" y2="98" stroke="#E74C3C" strokeWidth="2" />
+          <circle cx="82" cy="98" r="3.5" fill={CAT.eye} />
+          <circle cx="118" cy="98" r="3.5" fill={CAT.eye} />
         </g>
       );
+
     default:
       return null;
   }

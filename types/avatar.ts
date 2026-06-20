@@ -26,7 +26,7 @@ export type AvatarPartOptions = {
 };
 
 export const DEFAULT_AVATAR_CONFIG: AvatarConfig = {
-  hair: "bob",
+  hair: "short",
   eyes: "round",
   mouth: "smile",
   clothes: "tshirt",

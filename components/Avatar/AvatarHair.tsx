@@ -1,4 +1,5 @@
 import type { HairStyle } from "@/types/avatar";
+import { CAT } from "@/lib/avatarColors";
 
 interface AvatarHairProps {
   style: HairStyle;
@@ -7,60 +8,80 @@ interface AvatarHairProps {
 export function AvatarHair({ style }: AvatarHairProps) {
   switch (style) {
     case "short":
-      return (
-        <g>
-          <path
-            d="M52 95 Q50 45 100 38 Q150 45 148 95 Q145 70 100 65 Q55 70 52 95"
-            fill="#6B4226"
-          />
-          <path
-            d="M58 88 Q55 60 100 55 Q145 60 142 88"
-            fill="#8B5A2B"
-            opacity="0.6"
-          />
-        </g>
-      );
+      return null;
+
     case "bob":
       return (
         <g>
           <path
-            d="M45 100 Q42 35 100 30 Q158 35 155 100 Q158 130 145 140 Q130 125 100 120 Q70 125 55 140 Q42 130 45 100"
-            fill="#E84393"
+            d="M36,98 Q26,98 24,112 Q22,128 34,132 Q38,120 38,106 Q38,98 36,98"
+            fill="#E74C3C"
+            stroke={CAT.outlineDark}
+            strokeWidth="1.5"
           />
           <path
-            d="M55 95 Q52 50 100 45 Q148 50 145 95"
-            fill="#FD79A8"
-            opacity="0.5"
+            d="M164,98 Q174,98 176,112 Q178,128 166,132 Q162,120 162,106 Q162,98 164,98"
+            fill="#E74C3C"
+            stroke={CAT.outlineDark}
+            strokeWidth="1.5"
           />
+          <path
+            d="M38,102 Q100,88 162,102"
+            fill="none"
+            stroke="#C0392B"
+            strokeWidth="6"
+            strokeLinecap="round"
+          />
+          <ellipse cx="32" cy="114" rx="10" ry="12" fill="#FADBD8" stroke={CAT.outlineDark} strokeWidth="1" />
+          <ellipse cx="168" cy="114" rx="10" ry="12" fill="#FADBD8" stroke={CAT.outlineDark} strokeWidth="1" />
         </g>
       );
+
     case "long":
       return (
         <g>
-          <path
-            d="M42 105 Q38 30 100 25 Q162 30 158 105 Q165 180 145 195 Q130 160 100 155 Q70 160 55 195 Q35 180 42 105"
-            fill="#9B59B6"
+          <ellipse
+            cx="100"
+            cy="54"
+            rx="54"
+            ry="16"
+            fill="#C4A882"
+            stroke={CAT.outline}
+            strokeWidth="1.5"
           />
-          <path
-            d="M55 100 Q50 45 100 40 Q150 45 145 100 Q148 160 100 150 Q52 160 55 100"
-            fill="#BB8FCE"
-            opacity="0.4"
+          <ellipse
+            cx="100"
+            cy="44"
+            rx="40"
+            ry="28"
+            fill="#D4B896"
+            stroke={CAT.outline}
+            strokeWidth="1.5"
           />
+          <ellipse cx="88" cy="40" rx="10" ry="8" fill="#B89870" opacity="0.35" />
+          <ellipse cx="108" cy="38" rx="9" ry="7" fill="#B89870" opacity="0.35" />
+          <ellipse cx="98" cy="48" rx="8" ry="6" fill="#B89870" opacity="0.35" />
         </g>
       );
+
     case "twintail":
       return (
         <g>
           <path
-            d="M50 95 Q48 40 100 35 Q152 40 150 95 Q148 75 100 70 Q52 75 50 95"
-            fill="#FF6B9D"
+            d="M76,64 Q100,16 124,64 Q118,70 100,68 Q82,70 76,64"
+            fill="#6BA4E7"
+            stroke={CAT.outline}
+            strokeWidth="1.5"
+            strokeLinejoin="round"
           />
-          <ellipse cx="38" cy="110" rx="14" ry="35" fill="#FF6B9D" />
-          <ellipse cx="162" cy="110" rx="14" ry="35" fill="#FF6B9D" />
-          <circle cx="38" cy="78" r="6" fill="#FFD700" />
-          <circle cx="162" cy="78" r="6" fill="#FFD700" />
+          <ellipse cx="100" cy="48" rx="18" ry="22" fill="#8BB8EE" opacity="0.45" />
+          <circle cx="90" cy="46" r="3" fill="#fff" opacity="0.85" />
+          <circle cx="108" cy="42" r="2.5" fill="#fff" opacity="0.85" />
+          <circle cx="100" cy="56" r="2" fill="#fff" opacity="0.85" />
+          <ellipse cx="100" cy="68" rx="32" ry="7" fill="#FFD93D" stroke={CAT.outline} strokeWidth="1" />
         </g>
       );
+
     default:
       return null;
   }

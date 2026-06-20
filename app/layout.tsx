@@ -9,7 +9,7 @@ const mPlusRounded = M_PLUS_Rounded_1c({
 });
 
 export const metadata: Metadata = {
-  title: "アバターカスタマイザー",
+  title: "アバターカスタマイズアプリ",
   description: "かわいいアバターを自由にカスタマイズしよう！",
 };
 

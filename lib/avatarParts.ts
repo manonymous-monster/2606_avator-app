@@ -2,27 +2,27 @@ import type { AvatarPartOptions } from "@/types/avatar";
 
 export const AVATAR_PART_OPTIONS: AvatarPartOptions = {
   hair: [
-    { id: "short", label: "ショート", emoji: "✂️" },
-    { id: "bob", label: "ボブ", emoji: "💇" },
-    { id: "long", label: "ロング", emoji: "🌊" },
-    { id: "twintail", label: "ツインテール", emoji: "🎀" },
+    { id: "short", label: "なし", emoji: "🐱" },
+    { id: "bob", label: "ヘッドホン", emoji: "🎧" },
+    { id: "long", label: "ベレー帽", emoji: "🎨" },
+    { id: "twintail", label: "パーティーハット", emoji: "🎉" },
   ],
   eyes: [
-    { id: "round", label: "まる目", emoji: "👀" },
-    { id: "sparkle", label: "キラキラ", emoji: "✨" },
+    { id: "round", label: "まる目", emoji: "⚫" },
+    { id: "sparkle", label: "にこにこ", emoji: "^^" },
     { id: "sleepy", label: "眠た目", emoji: "😴" },
-    { id: "wink", label: "ウィンク", emoji: "😉" },
+    { id: "wink", label: "メガネ", emoji: "👓" },
   ],
   mouth: [
-    { id: "smile", label: "にっこり", emoji: "😊" },
-    { id: "grin", label: "にこにこ", emoji: "😄" },
-    { id: "small", label: "小さめ", emoji: "🙂" },
+    { id: "smile", label: "ねこ口", emoji: "🐾" },
+    { id: "grin", label: "あけ口", emoji: "😮" },
+    { id: "small", label: "ちいさめ", emoji: "·" },
   ],
   clothes: [
-    { id: "tshirt", label: "Tシャツ", emoji: "👕" },
-    { id: "hoodie", label: "パーカー", emoji: "🧥" },
-    { id: "dress", label: "ワンピース", emoji: "👗" },
-    { id: "overalls", label: "サロペット", emoji: "🩳" },
+    { id: "tshirt", label: "マフラー", emoji: "🧣" },
+    { id: "hoodie", label: "バンダナ", emoji: "🔵" },
+    { id: "dress", label: "メイド", emoji: "🎀" },
+    { id: "overalls", label: "ボーダー", emoji: "👕" },
   ],
 };
 
@@ -30,8 +30,8 @@ export const PART_CATEGORY_LABELS: Record<
   keyof AvatarPartOptions,
   string
 > = {
-  hair: "髪型",
+  hair: "頭の装飾",
   eyes: "目",
   mouth: "口",
-  clothes: "服",
+  clothes: "おしゃれ",
 };

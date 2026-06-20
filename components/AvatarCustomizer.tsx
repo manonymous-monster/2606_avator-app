@@ -33,7 +33,7 @@ export function AvatarCustomizer() {
   return (
     <div className="flex w-full max-w-4xl flex-col items-center gap-8 lg:flex-row lg:items-start lg:gap-12">
       <div className="avatar-preview flex-shrink-0">
-        <div className="relative mx-auto h-72 w-60 rounded-3xl border-4 border-white/90 bg-white/40 p-4 shadow-xl shadow-pink-200/50 backdrop-blur-sm">
+        <div className="relative mx-auto h-72 w-60 rounded-3xl border-4 border-white/90 bg-white/40 shadow-xl shadow-pink-200/50 backdrop-blur-sm">
           <Avatar config={config} />
         </div>
         <button

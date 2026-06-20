@@ -1,40 +1,58 @@
-# アバターカスタマイザー
+# アバターカスタマイズアプリタマイザー
 
-Next.js（App Router）+ TypeScript で作った、かわいいアバターカスタマイズアプリです。
+Next.js（App Router）+ TypeScript で作った、snackanimals 風のかわいいローポリ猫をカスタマイズできるアプリです。
 
 ## 機能
 
-- 髪型・目・口・服をそれぞれ 3〜4 種類から選択
-- 選択するとアバターがリアルタイムで更新
-- パーツは SVG で描画（画像ファイル不要）
-- ランダム生成ボタン付き
+- **頭の装飾・目・口・おしゃれ** をそれぞれ 3〜4 種類から選択
+- 選択すると猫アバターがリアルタイムで更新
+- 猫のパーツは **SVG** で描画（画像ファイル不要）
+- **ランダム生成** ボタン付き
+
+## カスタマイズ一覧
+
+| カテゴリ | 選択肢 |
+|---|---|
+| 頭の装飾 | なし / ヘッドホン / ベレー帽 / パーティーハット |
+| 目 | まる目 / にこにこ / 眠た目 / メガネ |
+| 口 | ねこ口 / あけ口 / ちいさめ |
+| おしゃれ | マフラー / バンダナ / メイド / ボーダー |
 
 ## ファイル構成
 
 ```
 260620_avator-app/
 ├── app/
-│   ├── globals.css          # グローバルスタイル
+│   ├── globals.css          # グローバルスタイル（Tailwind + 背景）
 │   ├── layout.tsx           # ルートレイアウト
 │   └── page.tsx             # メインページ
 ├── components/
 │   ├── Avatar/
-│   │   ├── Avatar.tsx       # アバター全体（SVG）
-│   │   ├── AvatarFace.tsx   # 顔・首
-│   │   ├── AvatarHair.tsx   # 髪型パーツ
+│   │   ├── Avatar.tsx       # 猫アバター全体（SVG）
+│   │   ├── AvatarFace.tsx   # 頭・体・耳・しっぽ・ひげ
+│   │   ├── AvatarHair.tsx   # 頭の装飾（帽子・ヘッドホンなど）
 │   │   ├── AvatarEyes.tsx   # 目パーツ
 │   │   ├── AvatarMouth.tsx  # 口パーツ
-│   │   └── AvatarClothes.tsx # 服パーツ
+│   │   └── AvatarClothes.tsx # おしゃれパーツ
 │   ├── PartSelector/
 │   │   ├── PartSelector.tsx # パーツ選択UI
 │   │   └── PartOption.tsx   # 選択ボタン
 │   └── AvatarCustomizer.tsx # 状態管理（Client Component）
 ├── lib/
-│   └── avatarParts.ts       # パーツ選択肢の定義
+│   ├── avatarParts.ts       # パーツ選択肢の定義
+│   └── avatarColors.ts      # 猫の配色定数
 ├── types/
 │   └── avatar.ts            # TypeScript 型定義
 └── package.json
 ```
+
+## スタイルの分担
+
+| 対象 | 技術 |
+|---|---|
+| ページ・ボタン・カード | Tailwind CSS（`className`） |
+| 猫アバター | SVG + `avatarColors.ts` |
+| 背景グラデーション | `globals.css` |
 
 ## 開発
 
@@ -49,8 +67,8 @@ http://localhost:3000 でアプリを確認できます。
 
 - Next.js 16（App Router）
 - TypeScript
-- Tailwind CSS
-- SVG（アバターパーツ）
+- Tailwind CSS v4
+- SVG（ローポリ猫パーツ）
 
 ## Git
 

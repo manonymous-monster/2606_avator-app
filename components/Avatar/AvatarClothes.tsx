@@ -1,4 +1,5 @@
 import type { ClothesStyle } from "@/types/avatar";
+import { CAT } from "@/lib/avatarColors";
 
 interface AvatarClothesProps {
   style: ClothesStyle;
@@ -9,65 +10,109 @@ export function AvatarClothes({ style }: AvatarClothesProps) {
     case "tshirt":
       return (
         <g>
-          <path
-            d="M55 165 L70 155 L85 162 L100 158 L115 162 L130 155 L145 165 L145 210 L55 210 Z"
-            fill="#74B9FF"
+          <ellipse
+            cx="100"
+            cy="158"
+            rx="34"
+            ry="14"
+            fill="#F5F0E8"
+            stroke={CAT.outline}
+            strokeWidth="1.5"
           />
           <path
-            d="M85 162 L100 175 L115 162"
-            fill="#0984E3"
-            opacity="0.3"
+            d="M128,152 Q138,158 134,168"
+            fill="none"
+            stroke="#E8E0D4"
+            strokeWidth="5"
+            strokeLinecap="round"
           />
-          <circle cx="100" cy="185" r="4" fill="#FFD700" />
+          <path
+            d="M72,152 Q62,158 66,168"
+            fill="none"
+            stroke="#E8E0D4"
+            strokeWidth="5"
+            strokeLinecap="round"
+          />
         </g>
       );
+
     case "hoodie":
       return (
         <g>
-          <path
-            d="M50 165 L68 152 L85 160 L100 155 L115 160 L132 152 L150 165 L150 215 L50 215 Z"
-            fill="#A29BFE"
+          <ellipse
+            cx="100"
+            cy="158"
+            rx="36"
+            ry="14"
+            fill="#6BA4E7"
+            stroke={CAT.outline}
+            strokeWidth="1.5"
           />
-          <path
-            d="M85 155 Q100 148 115 155 L115 175 Q100 182 85 175 Z"
-            fill="#6C5CE7"
-          />
-          <ellipse cx="100" cy="152" rx="18" ry="8" fill="#A29BFE" />
+          <circle cx="86" cy="156" r="2.5" fill="#fff" opacity="0.75" />
+          <circle cx="100" cy="152" r="2" fill="#fff" opacity="0.75" />
+          <circle cx="114" cy="156" r="2.5" fill="#fff" opacity="0.75" />
+          <circle cx="93" cy="162" r="2" fill="#fff" opacity="0.75" />
+          <circle cx="108" cy="162" r="2" fill="#fff" opacity="0.75" />
         </g>
       );
+
     case "dress":
       return (
         <g>
-          <path
-            d="M70 162 L100 158 L130 162 L145 215 Q100 225 55 215 Z"
-            fill="#FD79A8"
+          <ellipse
+            cx="100"
+            cy="172"
+            rx="36"
+            ry="28"
+            fill="#FAF5EE"
+            stroke={CAT.outline}
+            strokeWidth="1.5"
+          />
+          <ellipse
+            cx="100"
+            cy="152"
+            rx="28"
+            ry="10"
+            fill="#F0E8DA"
+            stroke={CAT.outline}
+            strokeWidth="1"
           />
           <path
-            d="M70 162 Q100 170 130 162"
-            fill="#E84393"
-            opacity="0.4"
+            d="M66,188 Q78,182 90,188 Q100,184 110,188 Q122,182 134,188"
+            fill="none"
+            stroke={CAT.outline}
+            strokeWidth="1.2"
+            strokeLinecap="round"
           />
-          <circle cx="85" cy="190" r="3" fill="#fff" opacity="0.5" />
-          <circle cx="115" cy="200" r="3" fill="#fff" opacity="0.5" />
+          <ellipse cx="100" cy="148" rx="8" ry="6" fill="#E74C3C" stroke={CAT.outline} strokeWidth="1" />
         </g>
       );
+
     case "overalls":
       return (
         <g>
-          <path
-            d="M60 165 L75 158 L85 165 L85 210 L60 210 Z"
-            fill="#55EFC4"
+          <ellipse
+            cx="100"
+            cy="168"
+            rx="38"
+            ry="26"
+            fill="#FADADD"
+            stroke={CAT.outline}
+            strokeWidth="1.5"
           />
-          <path
-            d="M115 165 L130 158 L140 165 L140 210 L115 210 Z"
-            fill="#55EFC4"
-          />
-          <rect x="55" y="165" width="90" height="50" rx="4" fill="#00B894" />
-          <rect x="82" y="158" width="8" height="20" rx="2" fill="#55EFC4" />
-          <rect x="110" y="158" width="8" height="20" rx="2" fill="#55EFC4" />
-          <circle cx="100" cy="185" r="5" fill="#FFD700" />
+          {[0, 1, 2, 3, 4].map((i) => (
+            <ellipse
+              key={i}
+              cx="100"
+              cy={154 + i * 7}
+              rx={34 - i * 1.5}
+              ry="2.5"
+              fill={i % 2 === 0 ? "#F8A5B8" : "#FADADD"}
+            />
+          ))}
         </g>
       );
+
     default:
       return null;
   }

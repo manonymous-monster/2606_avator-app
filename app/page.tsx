@@ -5,13 +5,13 @@ export default function Home() {
     <div className="flex min-h-screen flex-col items-center px-4 py-10 sm:px-6">
       <header className="mb-8 text-center">
         <p className="mb-2 text-sm font-bold tracking-widest text-pink-400 uppercase">
-          Avatar Maker
+          Avatar Customize
         </p>
         <h1 className="text-3xl font-extrabold text-purple-700 sm:text-4xl">
-          🎨 アバターカスタマイザー
+          🎨 アバターカスタマイズアプリ
         </h1>
         <p className="mt-3 text-sm text-purple-400 sm:text-base">
-          髪型・目・口・服を選んで、あなただけのアバターを作ろう！
+          頭の装飾・目・口・おしゃれを選んで、あなただけのローポリ猫を作ろう！
         </p>
       </header>
 
