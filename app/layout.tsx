@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import { M_PLUS_Rounded_1c } from "next/font/google";
+import { DotGothic16 } from "next/font/google";
 import "./globals.css";
 
-const mPlusRounded = M_PLUS_Rounded_1c({
-  weight: ["400", "700", "800"],
+const mPlusRounded = DotGothic16({
+  weight: ["400"],
   subsets: ["latin"],
   variable: "--font-rounded",
 });
