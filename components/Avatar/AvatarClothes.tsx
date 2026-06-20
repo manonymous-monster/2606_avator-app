@@ -12,7 +12,6 @@ export function AvatarClothes({ style }: AvatarClothesProps) {
     case "tshirt":
       return (
         <g>
-          <ellipse cx="100" cy={158 + BODY_SHIFT} rx="26" ry="12" fill="#F5F0E8" stroke={CAT.outline} strokeWidth="1.5" />
           <path d={`M120,${154 + BODY_SHIFT} Q128,${158 + BODY_SHIFT} 125,${166 + BODY_SHIFT}`} fill="none" stroke="#E8E0D4" strokeWidth="4" strokeLinecap="round" />
           <path d={`M80,${154 + BODY_SHIFT} Q72,${158 + BODY_SHIFT} 75,${166 + BODY_SHIFT}`} fill="none" stroke="#E8E0D4" strokeWidth="4" strokeLinecap="round" />
         </g>

@@ -11,11 +11,11 @@ const HEAD_RY_BASE = 50 * 0.95 * 0.9 * 0.97 * HEAD_SIZE;
 const HEAD_RX_BASE = 54 * 0.95 * 0.9 * 0.97 * 1.03 * HEAD_SIZE * HEAD_WIDE;
 
 /** 顔の外側輪郭のみ */
-const OUTLINE_SIZE = 0.97 * 1.05; // 3%小 → 5%大
+const OUTLINE_SIZE = 0.97 * 1.05 * 0.9; // 3%小 → 5%大 → 10%小
 const OUTLINE_TALL = 1.03; // 縦3%（正円に近づける）
 const OUTLINE_RX = HEAD_RX_BASE * OUTLINE_SIZE;
 const OUTLINE_RY = HEAD_RY_BASE * OUTLINE_SIZE * OUTLINE_TALL;
-const OUTLINE_EXTRA_DY = HEAD_RY_BASE * 0.15; // 輪郭のみ15%下
+const OUTLINE_EXTRA_DY = HEAD_RY_BASE * (0.15 + 0.05); // 輪郭のみ下へ（15% + 5%）
 
 const FACE_DY = HEAD_RY_BASE * 0.05; // 目鼻口ひげ用（固定）
 const HEAD_OUTLINE_CY =
@@ -31,6 +31,8 @@ const MUZZLE_CY = 118 + FACE_DY - 22 * 0.15; // 15%上へ
 const EAR_SCALE = 1.05 * 1.3;
 const EAR_PIVOT_Y = 62;
 const EAR_GROUP_DY = HEAD_OUTLINE_DY + FACE_DY + OUTLINE_EXTRA_DY;
+const EAR_HEIGHT = 17;
+const EAR_UP_DY = EAR_HEIGHT * (0.15 + 0.05); // 耳を上へ（15% + 5%）
 const EAR_INWARD = 28 * 0.15;
 const EAR_ROTATE = 12; // 外側へ傾ける（約15%分）
 
@@ -39,9 +41,14 @@ const BODY_SHIFT = -10 - HEAD_RY_BASE * 0.05;
 export function AvatarFace() {
   return (
     <g>
-      {/* ── しっぽ ── */}
+      <defs>
+        <clipPath id="avatarHeadClip">
+          <ellipse cx={HEAD_CX} cy={HEAD_OUTLINE_CY} rx={OUTLINE_RX} ry={OUTLINE_RY} />
+        </clipPath>
+      </defs>
+      {/* ── しっぽ（1本） ── */}
       <path
-        d="M54,146 Q34,136 30,112 Q28,92 40,84 Q50,92 54,112 Q56,130 60,142"
+        d="M56,148 Q38,130 30,108 Q26,90 40,84"
         fill="none"
         stroke={CAT.fur.mid}
         strokeWidth="12"
@@ -58,19 +65,6 @@ export function AvatarFace() {
         stroke={CAT.outline}
         strokeWidth="1.5"
       />
-      <ellipse cx="94" cy={162 + BODY_SHIFT} rx="18" ry="14" fill={CAT.fur.light} opacity="0.5" />
-
-      <ellipse
-        cx="100"
-        cy={166 + BODY_SHIFT}
-        rx="22"
-        ry="18"
-        fill={CAT.chest}
-        stroke={CAT.outline}
-        strokeWidth="1"
-        opacity="0.95"
-      />
-
       {/* ── 手足 ── */}
       <ellipse cx="80" cy={174 + BODY_SHIFT} rx="8" ry="7" fill={CAT.fur.base} stroke={CAT.outline} strokeWidth="1.5" />
       <ellipse cx="120" cy={174 + BODY_SHIFT} rx="8" ry="7" fill={CAT.fur.base} stroke={CAT.outline} strokeWidth="1.5" />
@@ -105,7 +99,7 @@ export function AvatarFace() {
       />
 
       {/* ── 耳（内側へ・外側に傾斜） ── */}
-      <g transform={`translate(0 ${EAR_GROUP_DY})`}>
+      <g transform={`translate(0 ${EAR_GROUP_DY - EAR_UP_DY})`}>
         <g
           transform={`translate(${EAR_INWARD} 0) translate(72 ${EAR_PIVOT_Y}) rotate(-${EAR_ROTATE}) scale(${EAR_SCALE}) translate(-72 -${EAR_PIVOT_Y})`}
         >
@@ -142,6 +136,7 @@ export function AvatarFace() {
         fill={CAT.muzzle}
         stroke={CAT.outline}
         strokeWidth="1"
+        clipPath="url(#avatarHeadClip)"
       />
 
       {/* 鼻（位置そのまま） */}
