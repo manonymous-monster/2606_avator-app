@@ -1,36 +1,61 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# アバターカスタマイザー
 
-## Getting Started
+Next.js（App Router）+ TypeScript で作った、かわいいアバターカスタマイズアプリです。
 
-First, run the development server:
+## 機能
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- 髪型・目・口・服をそれぞれ 3〜4 種類から選択
+- 選択するとアバターがリアルタイムで更新
+- パーツは SVG で描画（画像ファイル不要）
+- ランダム生成ボタン付き
+
+## ファイル構成
+
+```
+260620_avator-app/
+├── app/
+│   ├── globals.css          # グローバルスタイル
+│   ├── layout.tsx           # ルートレイアウト
+│   └── page.tsx             # メインページ
+├── components/
+│   ├── Avatar/
+│   │   ├── Avatar.tsx       # アバター全体（SVG）
+│   │   ├── AvatarFace.tsx   # 顔・首
+│   │   ├── AvatarHair.tsx   # 髪型パーツ
+│   │   ├── AvatarEyes.tsx   # 目パーツ
+│   │   ├── AvatarMouth.tsx  # 口パーツ
+│   │   └── AvatarClothes.tsx # 服パーツ
+│   ├── PartSelector/
+│   │   ├── PartSelector.tsx # パーツ選択UI
+│   │   └── PartOption.tsx   # 選択ボタン
+│   └── AvatarCustomizer.tsx # 状態管理（Client Component）
+├── lib/
+│   └── avatarParts.ts       # パーツ選択肢の定義
+├── types/
+│   └── avatar.ts            # TypeScript 型定義
+└── package.json
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 開発
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm install
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+http://localhost:3000 でアプリを確認できます。
 
-## Learn More
+## 技術スタック
 
-To learn more about Next.js, take a look at the following resources:
+- Next.js 16（App Router）
+- TypeScript
+- Tailwind CSS
+- SVG（アバターパーツ）
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Git
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+# リモートリポジトリを追加する場合
+git remote add origin <your-repo-url>
+git push -u origin main
+```
