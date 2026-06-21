@@ -49,7 +49,7 @@ export function AvatarCustomizer() {
   return (
     <div className="flex h-dvh w-full max-w-4xl flex-col overflow-hidden lg:h-auto lg:min-h-0 lg:max-h-none lg:flex-row lg:items-start lg:gap-12 lg:overflow-visible">
       {/* スマホ：70% / PC：左カラム */}
-      <div className="avatar-preview z-10 flex min-h-0 flex-[7] flex-col border-b border-white/60 bg-gradient-to-b from-[#fdf2f8]/95 to-[#ede9fe]/90 px-4 pb-3 pt-2 backdrop-blur-md lg:flex-none lg:shrink-0 lg:border-0 lg:bg-transparent lg:p-0 lg:backdrop-blur-none">
+      <div className="avatar-preview z-10 flex min-h-0 flex-[7] flex-col border-b border-white/60 bg-gradient-to-b to-[#ede9fe]/90 px-4 pb-3 pt-2 backdrop-blur-md lg:flex-none lg:shrink-0 lg:border-0 lg:bg-transparent lg:p-0 lg:backdrop-blur-none">
         <p className="mb-2 shrink-0 text-center text-xs font-bold tracking-widest text-pink-400 uppercase lg:hidden">
           Avatar Customize
         </p>

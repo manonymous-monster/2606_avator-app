@@ -1,5 +1,11 @@
 /** 猫アバター共通レイアウト定数 */
 
+export const CAT_SCALE = 1.1;
+export const CAT_SCALE_ORIGIN_X = 100;
+export const CAT_SCALE_ORIGIN_Y = 112;
+
+export const CAT_CONTENT_TRANSFORM = `translate(${CAT_SCALE_ORIGIN_X} ${CAT_SCALE_ORIGIN_Y}) scale(${CAT_SCALE}) translate(-${CAT_SCALE_ORIGIN_X} -${CAT_SCALE_ORIGIN_Y})`;
+
 export const HEAD_CX = 100;
 export const HEAD_BASE_CY = 88;
 export const HEAD_OUTLINE_DY = 50 * 0.15;
