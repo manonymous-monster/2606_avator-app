@@ -1,5 +1,60 @@
 import type { HairStyle } from "@/types/avatar";
 import { CAT } from "@/lib/avatarColors";
+import {
+  FACE_DY,
+  HEAD_BASE_CY,
+  HEAD_CX,
+  HEAD_OUTLINE_CY,
+  OUTLINE_RX,
+  OUTLINE_RY,
+} from "@/lib/avatarLayout";
+
+/** ベレー帽・パーティーハット用：調整済み頭輪郭に合わせる */
+const HEADWEAR_TRANSFORM = `translate(${HEAD_CX} ${HEAD_OUTLINE_CY}) scale(${OUTLINE_RX / 50} ${OUTLINE_RY / 50}) translate(-${HEAD_CX} -${HEAD_BASE_CY})`;
+
+/** 🎧 ヘッドホン：目・顔位置を基準に配置 */
+function Headphones() {
+  const cupR = OUTLINE_RX * 0.26;
+  const cupY = 106 + FACE_DY;
+  const cupXL = HEAD_CX - OUTLINE_RX * 0.84;
+  const cupXR = HEAD_CX + OUTLINE_RX * 0.84;
+  const bandTop = HEAD_OUTLINE_CY - OUTLINE_RY * 0.95;
+  const bandWidth = OUTLINE_RX * 0.15;
+  const bandAttachY = cupY - cupR * 0.75;
+
+  return (
+    <g>
+      {/* ヘッドバンド（頭頂をまたぐ太いアーチ） */}
+      <path
+        d={`M ${cupXL + cupR * 0.5} ${bandAttachY}
+            Q ${HEAD_CX} ${bandTop} ${cupXR - cupR * 0.5} ${bandAttachY}`}
+        fill="none"
+        stroke="#C0392B"
+        strokeWidth={bandWidth}
+        strokeLinecap="round"
+      />
+      <path
+        d={`M ${cupXL + cupR * 0.5} ${bandAttachY - bandWidth * 0.15}
+            Q ${HEAD_CX} ${bandTop + bandWidth * 0.2} ${cupXR - cupR * 0.5} ${bandAttachY - bandWidth * 0.15}`}
+        fill="none"
+        stroke="#E74C3C"
+        strokeWidth={bandWidth * 0.55}
+        strokeLinecap="round"
+        opacity="0.85"
+      />
+
+      {/* 左イヤーカップ */}
+      <circle cx={cupXL} cy={cupY} r={cupR} fill="#E74C3C" stroke={CAT.outlineDark} strokeWidth="1.5" />
+      <circle cx={cupXL} cy={cupY} r={cupR * 0.62} fill="#FADBD8" stroke={CAT.outlineDark} strokeWidth="0.8" />
+      <circle cx={cupXL - cupR * 0.18} cy={cupY - cupR * 0.18} r={cupR * 0.12} fill="#fff" opacity="0.35" />
+
+      {/* 右イヤーカップ */}
+      <circle cx={cupXR} cy={cupY} r={cupR} fill="#E74C3C" stroke={CAT.outlineDark} strokeWidth="1.5" />
+      <circle cx={cupXR} cy={cupY} r={cupR * 0.62} fill="#FADBD8" stroke={CAT.outlineDark} strokeWidth="0.8" />
+      <circle cx={cupXR - cupR * 0.18} cy={cupY - cupR * 0.18} r={cupR * 0.12} fill="#fff" opacity="0.35" />
+    </g>
+  );
+}
 
 interface AvatarHairProps {
   style: HairStyle;
@@ -11,19 +66,11 @@ export function AvatarHair({ style }: AvatarHairProps) {
       return null;
 
     case "bob":
-      return (
-        <g>
-          <path d="M34,94 Q22,94 20,108 Q18,124 30,128 Q34,116 34,102 Q34,94 34,94" fill="#E74C3C" stroke={CAT.outlineDark} strokeWidth="1.5" />
-          <path d="M166,94 Q178,94 180,108 Q182,124 170,128 Q166,116 166,102 Q166,94 166,94" fill="#E74C3C" stroke={CAT.outlineDark} strokeWidth="1.5" />
-          <path d="M36,98 Q100,80 164,98" fill="none" stroke="#C0392B" strokeWidth="6" strokeLinecap="round" />
-          <ellipse cx="28" cy="110" rx="9" ry="11" fill="#FADBD8" stroke={CAT.outlineDark} strokeWidth="1" />
-          <ellipse cx="172" cy="110" rx="9" ry="11" fill="#FADBD8" stroke={CAT.outlineDark} strokeWidth="1" />
-        </g>
-      );
+      return <Headphones />;
 
     case "long":
       return (
-        <g>
+        <g transform={HEADWEAR_TRANSFORM}>
           <ellipse cx="100" cy="50" rx="50" ry="14" fill="#C4A882" stroke={CAT.outline} strokeWidth="1.5" />
           <ellipse cx="100" cy="40" rx="36" ry="22" fill="#D4B896" stroke={CAT.outline} strokeWidth="1.5" />
           <ellipse cx="88" cy="36" rx="9" ry="7" fill="#B89870" opacity="0.35" />
@@ -33,7 +80,7 @@ export function AvatarHair({ style }: AvatarHairProps) {
 
     case "twintail":
       return (
-        <g>
+        <g transform={HEADWEAR_TRANSFORM}>
           <path d="M74,56 Q100,10 126,56 Q120,62 100,60 Q80,62 74,56" fill="#6BA4E7" stroke={CAT.outline} strokeWidth="1.5" strokeLinejoin="round" />
           <ellipse cx="100" cy="40" rx="16" ry="18" fill="#8BB8EE" opacity="0.45" />
           <circle cx="91" cy="38" r="2.5" fill="#fff" opacity="0.85" />

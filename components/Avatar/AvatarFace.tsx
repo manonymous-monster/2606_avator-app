@@ -1,42 +1,22 @@
 import { CAT } from "@/lib/avatarColors";
-
-/** レイアウト定数 */
-const HEAD_CX = 100;
-const HEAD_BASE_CY = 88;
-const HEAD_OUTLINE_DY = 50 * 0.15;
-const HEAD_SIZE = 0.9;
-const HEAD_WIDE = 1.1;
-
-const HEAD_RY_BASE = 50 * 0.95 * 0.9 * 0.97 * HEAD_SIZE;
-const HEAD_RX_BASE = 54 * 0.95 * 0.9 * 0.97 * 1.03 * HEAD_SIZE * HEAD_WIDE;
-
-/** 顔の外側輪郭のみ */
-const OUTLINE_SIZE = 0.97 * 1.05 * 0.9; // 3%小 → 5%大 → 10%小
-const OUTLINE_TALL = 1.03; // 縦3%（正円に近づける）
-const OUTLINE_RX = HEAD_RX_BASE * OUTLINE_SIZE;
-const OUTLINE_RY = HEAD_RY_BASE * OUTLINE_SIZE * OUTLINE_TALL;
-const OUTLINE_EXTRA_DY = HEAD_RY_BASE * (0.15 + 0.05); // 輪郭のみ下へ（15% + 5%）
-
-const FACE_DY = HEAD_RY_BASE * 0.05; // 目鼻口ひげ用（固定）
-const HEAD_OUTLINE_CY =
-  HEAD_BASE_CY + HEAD_OUTLINE_DY + FACE_DY + OUTLINE_EXTRA_DY;
-
-const SHADE_SCALE = 0.95 * 0.9 * 0.97 * HEAD_SIZE * OUTLINE_SIZE;
-const SHADE_WIDE = 1.03 * HEAD_WIDE;
-
-/** 白いマズル（目鼻口とは独立） */
-const MUZZLE_CY = 118 + FACE_DY - 22 * 0.15; // 15%上へ
-
-/** 耳 */
-const EAR_SCALE = 1.05 * 1.3;
-const EAR_PIVOT_Y = 62;
-const EAR_GROUP_DY = HEAD_OUTLINE_DY + FACE_DY + OUTLINE_EXTRA_DY;
-const EAR_HEIGHT = 17;
-const EAR_UP_DY = EAR_HEIGHT * (0.15 + 0.05); // 耳を上へ（15% + 5%）
-const EAR_INWARD = 28 * 0.15;
-const EAR_ROTATE = 12; // 外側へ傾ける（約15%分）
-
-const BODY_SHIFT = -10 - HEAD_RY_BASE * 0.05;
+import {
+  BODY_SHIFT,
+  EAR_GROUP_DY,
+  EAR_INWARD,
+  EAR_PIVOT_Y,
+  EAR_ROTATE,
+  EAR_SCALE,
+  EAR_UP_DY,
+  FACE_DY,
+  HEAD_CX,
+  HEAD_OUTLINE_CY,
+  MUZZLE_CY,
+  OUTLINE_RX,
+  OUTLINE_RY,
+  OUTLINE_TALL,
+  SHADE_SCALE,
+  SHADE_WIDE,
+} from "@/lib/avatarLayout";
 
 export function AvatarFace() {
   return (
