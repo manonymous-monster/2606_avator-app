@@ -48,29 +48,32 @@ PC表示は従来どおり左右2カラムを維持し、**レスポンシブで
 ```
 260620_avator-app/
 ├── app/
-│   ├── globals.css          # グローバルスタイル（Tailwind + 背景）
+│   ├── globals.css          # グローバルスタイル（Tailwind・背景グラデーション）
 │   ├── layout.tsx           # ルートレイアウト
 │   └── page.tsx             # メインページ
 ├── components/
 │   ├── Avatar/
-│   │   ├── Avatar.tsx       # 猫アバター全体（SVG）
-│   │   ├── AvatarFace.tsx   # 頭・体・耳・しっぽ・ひげ
-│   │   ├── AvatarHair.tsx   # アクセサリー（帽子・ヘッドホンなど）
+│   │   ├── Avatar.tsx       # SVG全体（背景・スケール・床影）
+│   │   ├── AvatarFace.tsx   # 頭・体・耳・しっぽ・猫種別模様
+│   │   ├── AvatarHair.tsx   # アクセサリー（ヘッドホン・帽子など）
 │   │   ├── AvatarEyes.tsx   # 目パーツ
-│   │   ├── AvatarMouth.tsx    # 口パーツ
-│   │   └── AvatarClothes.tsx # おしゃれパーツ
+│   │   ├── AvatarMouth.tsx  # 口パーツ
+│   │   └── AvatarClothes.tsx # おしゃれ（マフラー・バンダナ・リボン・ボーダー）
 │   ├── PartSelector/
 │   │   ├── PartSelector.tsx # パーツ選択UI
 │   │   └── PartOption.tsx   # 選択ボタン
-│   └── AvatarCustomizer.tsx # 状態管理（Client Component）
+│   └── AvatarCustomizer.tsx # 状態管理・レスポンシブレイアウト（Client Component）
 ├── lib/
 │   ├── avatarParts.ts       # パーツ選択肢の定義
-│   ├── avatarLayout.ts      # 猫・装飾のレイアウト定数
+│   ├── avatarLayout.ts      # 猫・装飾のレイアウト定数（スケール・首元オフセットなど）
+│   ├── avatarColors.ts      # 猫SVGの共通配色
 │   ├── avatarBackgrounds.ts # 背景色定義
-│   ├── catBreeds.ts         # 猫の種類ごとの配色
+│   ├── catBreeds.ts         # 猫の種類ごとの配色・模様
 │   └── downloadAvatarPng.ts # PNGダウンロード処理
 ├── types/
 │   └── avatar.ts            # TypeScript 型定義
+├── next.config.ts
+├── tsconfig.json
 └── package.json
 ```
 
@@ -79,7 +82,7 @@ PC表示は従来どおり左右2カラムを維持し、**レスポンシブで
 | 対象 | 技術 |
 |---|---|
 | ページ・ボタン・カード | Tailwind CSS（`className`） |
-| 猫アバター | SVG + `catBreeds.ts` / `avatarLayout.ts` |
+| 猫アバター | SVG + `avatarColors.ts` / `catBreeds.ts` / `avatarLayout.ts` |
 | 背景グラデーション | `globals.css` |
 
 ## 開発
