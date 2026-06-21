@@ -22,7 +22,7 @@ export const Avatar = forwardRef<SVGSVGElement, AvatarProps>(function Avatar(
       ref={ref}
       viewBox="0 0 200 230"
       xmlns="http://www.w3.org/2000/svg"
-      className="h-full w-full"
+      className="h-full w-full overflow-hidden rounded-[calc(1.5rem-4px)]"
       aria-label="カスタマイズされたローポリ猫アバター"
     >
       <defs>

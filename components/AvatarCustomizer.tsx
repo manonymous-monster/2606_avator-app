@@ -54,7 +54,7 @@ export function AvatarCustomizer() {
           Avatar Customize
         </p>
         <div className="flex min-h-0 flex-1 flex-col gap-2 lg:min-h-0 lg:flex-none lg:items-center lg:gap-4">
-          <div className="relative min-h-0 flex-[8.5] w-full rounded-3xl border-4 border-white/90 bg-white/40 shadow-xl shadow-pink-200/50 backdrop-blur-sm lg:flex-none lg:h-72 lg:w-60">
+          <div className="relative isolate min-h-0 flex-[8.5] w-full overflow-hidden rounded-3xl border-4 border-white/90 bg-white/50 shadow-xl shadow-pink-200/50 backdrop-blur-sm lg:flex-none lg:h-72 lg:w-60 lg:bg-white/70 lg:backdrop-blur-none">
             <Avatar ref={svgRef} config={config} />
           </div>
           <div className="grid min-h-0 flex-[1.5] grid-cols-2 gap-2 lg:flex lg:w-full lg:max-w-xs lg:flex-none lg:flex-col lg:gap-2">
