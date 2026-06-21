@@ -30,9 +30,9 @@ export const AVATAR_PART_OPTIONS: AvatarPartOptions = {
     { id: "overalls", label: "ボーダー", emoji: "👕" },
   ],
   background: [
-    { id: "red", label: "パステル赤", emoji: "", swatch: "#FFCACA" },
-    { id: "yellow", label: "パステル黄", emoji: "", swatch: "#FFEDA0" },
-    { id: "blue", label: "パステル青", emoji: "", swatch: "#B8DAFF" },
+    { id: "red", label: "あか", emoji: "", swatch: "#FFCACA" },
+    { id: "yellow", label: "きいろ", emoji: "", swatch: "#FFEDA0" },
+    { id: "blue", label: "あお", emoji: "", swatch: "#B8DAFF" },
   ],
 };
 

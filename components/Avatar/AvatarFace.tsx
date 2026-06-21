@@ -1,6 +1,10 @@
 import type { CatBreed } from "@/types/avatar";
 import { getCatPalette, type CatPalette } from "@/lib/catBreeds";
 import {
+  BODY_CY,
+  BODY_CX,
+  BODY_RX,
+  BODY_RY,
   BODY_SHIFT,
   EAR_GROUP_DY,
   EAR_INWARD,
@@ -94,6 +98,17 @@ function HachiwarePatch({ palette }: { palette: CatPalette }) {
   );
 }
 
+function buildTailPath() {
+  const baseX = BODY_CX - BODY_RX * 0.82;
+  const baseY = BODY_CY + BODY_RY * 0.12;
+
+  return [
+    `M ${baseX} ${baseY}`,
+    `Q ${baseX - 18} ${baseY - 18} ${baseX - 27} ${baseY - 40}`,
+    `Q ${baseX - 38} ${baseY - 74} ${baseX - 36} ${baseY - 80}`,
+  ].join(" ");
+}
+
 export function AvatarFace({ breed }: AvatarFaceProps) {
   const palette = getCatPalette(breed);
 
@@ -105,13 +120,14 @@ export function AvatarFace({ breed }: AvatarFaceProps) {
         </clipPath>
       </defs>
 
-      {/* ── しっぽ ── */}
+      {/* ── しっぽ（体の下・左後ろから） ── */}
       <path
-        d="M56,148 Q38,130 30,108 Q26,90 40,84"
+        d={buildTailPath()}
         fill="none"
         stroke={breed === "hachiware" ? palette.fur.base : palette.fur.mid}
         strokeWidth="12"
         strokeLinecap="round"
+        strokeLinejoin="round"
       />
 
       {/* ── 体 ── */}

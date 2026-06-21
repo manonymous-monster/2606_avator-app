@@ -6,6 +6,9 @@ export const CAT_SCALE_ORIGIN_Y = 112;
 
 export const CAT_CONTENT_TRANSFORM = `translate(${CAT_SCALE_ORIGIN_X} ${CAT_SCALE_ORIGIN_Y}) scale(${CAT_SCALE}) translate(-${CAT_SCALE_ORIGIN_X} -${CAT_SCALE_ORIGIN_Y})`;
 
+/** 床影（viewBox 高さの 5% 分上） */
+export const FLOOR_SHADOW_CY = 212 - 230 * 0.05;
+
 export const HEAD_CX = 100;
 export const HEAD_BASE_CY = 88;
 export const HEAD_OUTLINE_DY = 50 * 0.15;
@@ -51,3 +54,6 @@ export const PAW_FRONT_CY = 174 + BODY_SHIFT;
 export const PAW_BACK_CY = 196 + BODY_SHIFT;
 export const NECK_Y = HEAD_OUTLINE_CY + OUTLINE_RY * 0.78;
 export const SHOULDER_X = BODY_CX + BODY_RX * 0.82;
+
+/** 首元アクセ（マフラー・バンダナ・リボン）の下方向オフセット */
+export const CLOTHES_DY = (BODY_CY - NECK_Y) * 0.3;

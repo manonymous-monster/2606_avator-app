@@ -5,6 +5,7 @@ import {
   BODY_CY,
   BODY_RX,
   BODY_RY,
+  CLOTHES_DY,
   NECK_Y,
 } from "@/lib/avatarLayout";
 
@@ -196,10 +197,12 @@ function RibbonBow() {
   );
 }
 
-/** ボーダー：胴体の横ストライプ */
+/** ボーダー：胴体の横ストライプ（淡い青） */
 function BorderShirt() {
   const shirtY = BODY_CY - BODY_RY * 0.05;
   const stripeTop = BODY_CY - BODY_RY * 0.55;
+  const blueLight = "#D6EAF8";
+  const blueStripe = "#9EC5E8";
 
   return (
     <g>
@@ -208,7 +211,7 @@ function BorderShirt() {
         cy={shirtY}
         rx={BODY_RX}
         ry={BODY_RY * 0.82}
-        fill="#FADADD"
+        fill={blueLight}
         stroke={CAT.outline}
         strokeWidth="1.5"
       />
@@ -219,7 +222,7 @@ function BorderShirt() {
           cy={stripeTop + i * (BODY_RY * 0.22)}
           rx={BODY_RX * 0.86 - i * 1.2}
           ry={BODY_RY * 0.09}
-          fill={i % 2 === 0 ? "#F8A5B8" : "#FADADD"}
+          fill={i % 2 === 0 ? blueStripe : blueLight}
         />
       ))}
     </g>
@@ -227,13 +230,17 @@ function BorderShirt() {
 }
 
 export function AvatarClothes({ style }: AvatarClothesProps) {
+  const neckwear = (node: React.ReactNode) => (
+    <g transform={`translate(0 ${CLOTHES_DY})`}>{node}</g>
+  );
+
   switch (style) {
     case "tshirt":
-      return <Muffler />;
+      return neckwear(<Muffler />);
     case "hoodie":
-      return <Bandana />;
+      return neckwear(<Bandana />);
     case "dress":
-      return <RibbonBow />;
+      return neckwear(<RibbonBow />);
     case "overalls":
       return <BorderShirt />;
     default:

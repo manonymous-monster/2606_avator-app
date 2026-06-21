@@ -29,13 +29,13 @@ export function AvatarMouth({ style }: AvatarMouthProps) {
           <ellipse
             cx="100"
             cy={MOUTH_Y + 2}
-            rx="8"
-            ry="7"
+            rx="7.2"
+            ry="6.3"
             fill="#F5A0A0"
             stroke={CAT.outlineDark}
             strokeWidth="1.5"
           />
-          <ellipse cx="100" cy={MOUTH_Y + 4} rx="5" ry="3" fill="#E88888" opacity="0.5" />
+          <ellipse cx="100" cy={MOUTH_Y + 4} rx="4.5" ry="2.7" fill="#E88888" opacity="0.5" />
         </g>
       );
 

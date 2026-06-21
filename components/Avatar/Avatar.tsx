@@ -1,7 +1,7 @@
 import { forwardRef } from "react";
 import type { AvatarConfig } from "@/types/avatar";
 import { AVATAR_BACKGROUNDS } from "@/lib/avatarBackgrounds";
-import { CAT_CONTENT_TRANSFORM } from "@/lib/avatarLayout";
+import { CAT_CONTENT_TRANSFORM, FLOOR_SHADOW_CY } from "@/lib/avatarLayout";
 import { AvatarClothes } from "./AvatarClothes";
 import { AvatarEyes } from "./AvatarEyes";
 import { AvatarFace } from "./AvatarFace";
@@ -46,7 +46,7 @@ export const Avatar = forwardRef<SVGSVGElement, AvatarProps>(function Avatar(
       />
 
       <g transform={CAT_CONTENT_TRANSFORM}>
-        <ellipse cx="100" cy="212" rx="38" ry="4" fill={bg.shadow} opacity="0.35" />
+        <ellipse cx="100" cy={FLOOR_SHADOW_CY} rx="38" ry="4" fill={bg.shadow} opacity="0.35" />
 
         <g filter="url(#softShadow)">
           <AvatarFace breed={config.breed} />
