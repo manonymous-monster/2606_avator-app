@@ -11,7 +11,7 @@ export default function Home() {
           🎨 アバターカスタマイズアプリ
         </h1>
         <p className="mt-3 text-sm text-purple-400 sm:text-base">
-          頭の装飾・目・口・おしゃれを選んで、あなただけのローポリ猫を作ろう！
+          アクセサリー・目・口・おしゃれを選んで、あなただけのローポリ猫を作ろう！
         </p>
       </header>
 

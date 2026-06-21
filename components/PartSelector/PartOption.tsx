@@ -1,6 +1,7 @@
 interface PartOptionProps {
   label: string;
   emoji: string;
+  swatch?: string;
   isSelected: boolean;
   onClick: () => void;
 }
@@ -8,6 +9,7 @@ interface PartOptionProps {
 export function PartOption({
   label,
   emoji,
+  swatch,
   isSelected,
   onClick,
 }: PartOptionProps) {
@@ -25,9 +27,17 @@ export function PartOption({
           : "border-white/80 bg-white/70 text-gray-600 hover:border-pink-200 hover:bg-pink-50",
       ].join(" ")}
     >
-      <span className="text-xl leading-none" aria-hidden="true">
-        {emoji}
-      </span>
+      {swatch ? (
+        <span
+          className="h-6 w-6 rounded-full border-2 border-white shadow-sm"
+          style={{ backgroundColor: swatch }}
+          aria-hidden="true"
+        />
+      ) : (
+        <span className="text-xl leading-none" aria-hidden="true">
+          {emoji}
+        </span>
+      )}
       <span className="text-xs">{label}</span>
     </button>
   );

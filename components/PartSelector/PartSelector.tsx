@@ -24,12 +24,19 @@ export function PartSelector({ config, onChange }: PartSelectorProps) {
             <span className="inline-block h-2 w-2 rounded-full bg-pink-400" />
             {PART_CATEGORY_LABELS[category]}
           </h2>
-          <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
+          <div
+            className={
+              category === "background" || category === "breed"
+                ? "grid grid-cols-3 gap-2"
+                : "grid grid-cols-2 gap-2 sm:grid-cols-4"
+            }
+          >
             {AVATAR_PART_OPTIONS[category].map((option) => (
               <PartOption
                 key={option.id}
                 label={option.label}
                 emoji={option.emoji}
+                swatch={option.swatch}
                 isSelected={config[category] === option.id}
                 onClick={() => onChange(category, option.id)}
               />

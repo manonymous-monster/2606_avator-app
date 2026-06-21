@@ -1,4 +1,6 @@
+import { forwardRef } from "react";
 import type { AvatarConfig } from "@/types/avatar";
+import { AVATAR_BACKGROUNDS } from "@/lib/avatarBackgrounds";
 import { AvatarClothes } from "./AvatarClothes";
 import { AvatarEyes } from "./AvatarEyes";
 import { AvatarFace } from "./AvatarFace";
@@ -9,9 +11,15 @@ interface AvatarProps {
   config: AvatarConfig;
 }
 
-export function Avatar({ config }: AvatarProps) {
+export const Avatar = forwardRef<SVGSVGElement, AvatarProps>(function Avatar(
+  { config },
+  ref,
+) {
+  const bg = AVATAR_BACKGROUNDS[config.background];
+
   return (
     <svg
+      ref={ref}
       viewBox="0 0 200 230"
       xmlns="http://www.w3.org/2000/svg"
       className="h-full w-full"
@@ -19,15 +27,14 @@ export function Avatar({ config }: AvatarProps) {
     >
       <defs>
         <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="#FAF8F5" />
-          <stop offset="100%" stopColor="#F0EDE8" />
+          <stop offset="0%" stopColor={bg.from} />
+          <stop offset="100%" stopColor={bg.to} />
         </linearGradient>
         <filter id="softShadow" x="-15%" y="-15%" width="130%" height="130%">
           <feDropShadow dx="0" dy="4" stdDeviation="5" floodColor="#C4B8A8" floodOpacity="0.3" />
         </filter>
       </defs>
 
-      {/* 背景 */}
       <rect
         x="8"
         y="8"
@@ -37,11 +44,10 @@ export function Avatar({ config }: AvatarProps) {
         fill="url(#bgGradient)"
       />
 
-      {/* 床影 */}
-      <ellipse cx="100" cy="212" rx="38" ry="4" fill="#C4B8A8" opacity="0.25" />
+      <ellipse cx="100" cy="212" rx="38" ry="4" fill={bg.shadow} opacity="0.35" />
 
       <g filter="url(#softShadow)">
-        <AvatarFace />
+        <AvatarFace breed={config.breed} />
         <AvatarClothes style={config.clothes} />
         <AvatarHair style={config.hair} />
         <AvatarEyes style={config.eyes} />
@@ -49,4 +55,4 @@ export function Avatar({ config }: AvatarProps) {
       </g>
     </svg>
   );
-}
+});

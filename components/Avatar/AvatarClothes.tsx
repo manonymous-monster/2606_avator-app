@@ -124,43 +124,74 @@ function Bandana() {
   );
 }
 
-/** メイド：エプロン＋リボン */
-function MaidApron() {
-  const bibY = NECK_Y + BODY_RY * 0.08;
-  const apronY = BODY_CY + BODY_RY * 0.12;
-  const bowY = NECK_Y - BODY_RY * 0.05;
+/** 🎀 リボン：バンダナと同位置・同サイズ感 */
+function RibbonBow() {
+  const knotY = NECK_Y + 1;
+  const bandRx = BODY_RX * 0.92;
+  const bandRy = BODY_RY * 0.55;
+  const bowY = knotY + bandRy * 0.28;
+  const tipY = BODY_CY - BODY_RY * 0.35;
+  const loopRx = bandRx * 0.36;
+  const loopRy = bandRy * 0.44;
+  const pink = "#F8A5C8";
+  const pinkLight = "#FADADD";
 
   return (
     <g>
+      {/* 左ループ */}
       <ellipse
-        cx={BODY_CX}
-        cy={apronY}
-        rx={BODY_RX * 0.98}
-        ry={BODY_RY * 0.88}
-        fill="#FAF5EE"
+        cx={BODY_CX - loopRx * 0.88}
+        cy={bowY - loopRy * 0.15}
+        rx={loopRx}
+        ry={loopRy}
+        fill={pink}
         stroke={CAT.outline}
         strokeWidth="1.5"
+        transform={`rotate(-20 ${BODY_CX - loopRx * 0.88} ${bowY - loopRy * 0.15})`}
       />
+      {/* 右ループ */}
       <ellipse
-        cx={BODY_CX}
-        cy={bibY}
-        rx={BODY_RX * 0.72}
-        ry={BODY_RY * 0.38}
-        fill="#F0E8DA"
+        cx={BODY_CX + loopRx * 0.88}
+        cy={bowY - loopRy * 0.15}
+        rx={loopRx}
+        ry={loopRy}
+        fill={pink}
         stroke={CAT.outline}
-        strokeWidth="1"
+        strokeWidth="1.5"
+        transform={`rotate(20 ${BODY_CX + loopRx * 0.88} ${bowY - loopRy * 0.15})`}
       />
+      {/* 左垂れ */}
       <path
-        d={`M${BODY_CX - BODY_RX * 0.9},${apronY + BODY_RY * 0.45}
-            Q${BODY_CX - BODY_RX * 0.35},${apronY + BODY_RY * 0.25} ${BODY_CX - BODY_RX * 0.08},${apronY + BODY_RY * 0.5}
-            Q${BODY_CX},${apronY + BODY_RY * 0.35} ${BODY_CX + BODY_RX * 0.08},${apronY + BODY_RY * 0.5}
-            Q${BODY_CX + BODY_RX * 0.35},${apronY + BODY_RY * 0.25} ${BODY_CX + BODY_RX * 0.9},${apronY + BODY_RY * 0.45}`}
-        fill="none"
+        d={`M${BODY_CX - 4},${bowY + 3}
+            L${BODY_CX - loopRx * 0.42},${tipY}
+            L${BODY_CX - 1},${tipY - bandRy * 0.1} Z`}
+        fill={pinkLight}
         stroke={CAT.outline}
         strokeWidth="1.2"
-        strokeLinecap="round"
+        strokeLinejoin="round"
       />
-      <ellipse cx={BODY_CX} cy={bowY} rx={BODY_RX * 0.22} ry={BODY_RY * 0.2} fill="#E74C3C" stroke={CAT.outline} strokeWidth="1" />
+      {/* 右垂れ */}
+      <path
+        d={`M${BODY_CX + 4},${bowY + 3}
+            L${BODY_CX + loopRx * 0.42},${tipY}
+            L${BODY_CX + 1},${tipY - bandRy * 0.1} Z`}
+        fill={pinkLight}
+        stroke={CAT.outline}
+        strokeWidth="1.2"
+        strokeLinejoin="round"
+      />
+      {/* 結び目 */}
+      <ellipse
+        cx={BODY_CX}
+        cy={bowY}
+        rx={loopRx * 0.24}
+        ry={loopRy * 0.3}
+        fill="#E74C3C"
+        stroke={CAT.outline}
+        strokeWidth="1.2"
+      />
+      <circle cx={BODY_CX - loopRx * 0.95} cy={bowY - loopRy * 0.35} r="2" fill="#fff" opacity="0.55" />
+      <circle cx={BODY_CX + loopRx * 0.75} cy={bowY - loopRy * 0.38} r="1.6" fill="#fff" opacity="0.55" />
     </g>
   );
 }
@@ -202,7 +233,7 @@ export function AvatarClothes({ style }: AvatarClothesProps) {
     case "hoodie":
       return <Bandana />;
     case "dress":
-      return <MaidApron />;
+      return <RibbonBow />;
     case "overalls":
       return <BorderShirt />;
     default:
