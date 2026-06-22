@@ -95,7 +95,7 @@ npm run dev
 http://localhost:3000 でアプリを確認できます。
 
 ## 技術スタック
-
+- Cursor（AIコーディングツール）を活用して開発
 - Next.js 16（App Router）
 - TypeScript
 - Tailwind CSS v4
